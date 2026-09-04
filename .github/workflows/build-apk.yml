@@ -29,7 +29,13 @@ jobs:
 
       - name: Accept Android SDK Licenses
         run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          mkdir -p "$ANDROID_HOME/licenses"
+          echo -e "89330172875f450e46666f2b6235168f6dd6ae61\n24333f8a637b37e4d5137239f2a0d21c3ee9ee9e\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
+          echo -e "84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+          echo -e "60100715780f9a9094775d1678e06385d8525b78" > "$ANDROID_HOME/licenses/android-googletv-license"
+          echo -e "33b622e74720461b1705f14069a4896b470067a2" > "$ANDROID_HOME/licenses/google-gdk-license"
+          echo -e "d975f75130fa26d40209975192452330c8360d81" > "$ANDROID_HOME/licenses/intel-android-extra-license"
+          echo -e "e9acab83870309b1011030c6c42ab684b0d9f77e" > "$ANDROID_HOME/licenses/mips-android-sysimage-license"
 
       - name: Install Node Dependencies
         run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
