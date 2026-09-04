@@ -1,0 +1,9 @@
+{
+  "appId": "com.wallflow.app",
+  "appName": "WallFlow",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
