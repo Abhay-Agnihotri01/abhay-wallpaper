@@ -50,6 +50,9 @@ export default function App() {
   const [isAmbianceMode, setIsAmbianceMode] = useState(true);
 
   useEffect(() => {
+    // Initial sync for native Android background alarm scheduler
+    wallpaperEngine.syncNativeBackgroundAlarm();
+
     // Subscribe to engine state mutations
     const unsubscribe = wallpaperEngine.subscribe(() => {
       setTick((t) => t + 1);
