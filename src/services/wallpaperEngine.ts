@@ -9,6 +9,7 @@ import {
 } from '../types/wallpaper';
 import { providerRegistry } from './providers';
 import { CURATED_WALLPAPERS } from '../data/curatedWallpapers';
+import { setDeviceSystemWallpaper } from './nativeWallpaper';
 
 const STORAGE_KEY_SETTINGS = 'wallflow_settings';
 const STORAGE_KEY_INTERESTS = 'wallflow_interests';
@@ -99,7 +100,7 @@ export class WallpaperEngine {
     this.listeners.forEach((fn) => fn());
   }
 
-  public applyWallpaperManually(wallpaper: Wallpaper) {
+  public async applyWallpaperManually(wallpaper: Wallpaper) {
     this.currentWallpaper = wallpaper;
     this.cachedFiles = [
       {
@@ -110,6 +111,10 @@ export class WallpaperEngine {
         cachedAt: Date.now(),
       },
     ];
+
+    // Trigger native Android wallpaper change if running on native mobile
+    setDeviceSystemWallpaper(wallpaper.downloadUrl, this.settings.applyTo);
+
     this.addLog(
       'APPLY_WALLPAPER',
       `Manual set from history/favorites: "${wallpaper.title}"`,
@@ -500,6 +505,9 @@ export class WallpaperEngine {
       // 5. Apply to Android WallpaperManager (Section 20 & 21)
       const oldCurrent = this.currentWallpaper;
       this.currentWallpaper = candidate;
+
+      // Trigger native Android wallpaper change if running on native mobile
+      setDeviceSystemWallpaper(candidate.downloadUrl, this.settings.applyTo);
 
       // Duplicate prevention: remember last 20 image IDs (Section 29)
       this.recentImageIds.unshift(candidate.providerImageId);

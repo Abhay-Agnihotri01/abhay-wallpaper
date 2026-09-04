@@ -13,9 +13,12 @@ import {
   ShieldAlert,
   Sliders,
   History,
-  HardDrive
+  HardDrive,
+  Smartphone
 } from 'lucide-react';
+import { Capacitor } from '@capacitor/core';
 import { Wallpaper, AutomationState, UserSettings, IntervalPreset } from '../types/wallpaper';
+import { setDeviceSystemWallpaper } from '../services/nativeWallpaper';
 
 interface HomeScreenProps {
   currentWallpaper: Wallpaper | null;
@@ -104,6 +107,19 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
       {/* Main Content Area */}
       <div className="p-5 space-y-5 flex-1">
+        {/* Native Android Mobile Indicator Banner */}
+        {Capacitor.isNativePlatform() && (
+          <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-between text-xs text-emerald-300">
+            <div className="flex items-center gap-2 font-medium">
+              <Smartphone className="w-4 h-4 text-emerald-400 animate-pulse" />
+              <span>Native Android APK Connected • Modifying Device Wallpaper</span>
+            </div>
+            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-200">
+              System Active
+            </span>
+          </div>
+        )}
+
         {/* Status Pill Badge */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -185,17 +201,29 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => onToggleFavorite(currentWallpaper)}
-                    className="p-2 rounded-xl bg-black/50 hover:bg-black/80 backdrop-blur-md text-white transition-colors"
-                    title="Toggle favorite"
-                  >
-                    <Heart
-                      className={`w-4 h-4 ${
-                        currentWallpaper.isFavorite ? 'fill-rose-500 text-rose-500' : 'text-neutral-300'
-                      }`}
-                    />
-                  </button>
+                  <div className="flex items-center gap-1.5">
+                    {Capacitor.isNativePlatform() && (
+                      <button
+                        onClick={() => setDeviceSystemWallpaper(currentWallpaper.downloadUrl, settings.applyTo)}
+                        className="px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1 transition-all shadow-lg"
+                        title="Set current image as actual phone wallpaper"
+                      >
+                        <Smartphone className="w-3.5 h-3.5" />
+                        <span>Apply to Device</span>
+                      </button>
+                    )}
+                    <button
+                      onClick={() => onToggleFavorite(currentWallpaper)}
+                      className="p-2 rounded-xl bg-black/50 hover:bg-black/80 backdrop-blur-md text-white transition-colors"
+                      title="Toggle favorite"
+                    >
+                      <Heart
+                        className={`w-4 h-4 ${
+                          currentWallpaper.isFavorite ? 'fill-rose-500 text-rose-500' : 'text-neutral-300'
+                        }`}
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
             </>
