@@ -9,7 +9,11 @@ import {
 } from '../types/wallpaper';
 import { providerRegistry } from './providers';
 import { CURATED_WALLPAPERS } from '../data/curatedWallpapers';
-import { setDeviceSystemWallpaper } from './nativeWallpaper';
+import { 
+  setDeviceSystemWallpaper, 
+  scheduleBackgroundWallpaperRotation, 
+  stopBackgroundWallpaperRotation 
+} from './nativeWallpaper';
 
 const STORAGE_KEY_SETTINGS = 'wallflow_settings';
 const STORAGE_KEY_INTERESTS = 'wallflow_interests';
@@ -286,10 +290,29 @@ export class WallpaperEngine {
     }, 1000);
   }
 
+  public syncNativeBackgroundAlarm() {
+    if (this.state !== 'RUNNING') {
+      stopBackgroundWallpaperRotation();
+      return;
+    }
+
+    const urls = [
+      ...(this.queue || []).map((w) => w.downloadUrl),
+      ...(CURATED_WALLPAPERS || []).map((w) => w.downloadUrl),
+    ].filter(Boolean);
+
+    scheduleBackgroundWallpaperRotation(
+      this.settings.intervalMinutes,
+      urls,
+      this.settings.applyTo
+    );
+  }
+
   private scheduleNextChange() {
     const minutes = this.settings.intervalMinutes;
     this.remainingSeconds = Math.max(1, Math.round(minutes * 60));
     this.nextChangeTimestamp = Date.now() + this.remainingSeconds * 1000;
+    this.syncNativeBackgroundAlarm();
   }
 
   private tick() {
@@ -582,6 +605,7 @@ export class WallpaperEngine {
 
   public pauseAutomation() {
     this.state = 'PAUSED';
+    stopBackgroundWallpaperRotation();
     this.addLog('TRIGGER', 'User paused wallpaper automation.');
     this.notify();
   }
