@@ -132,11 +132,9 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                          <Sparkles className="w-3.5 h-3.5" />
-                        </div>
+                        <img src="/logo.png" className="w-6 h-6 rounded-lg object-cover shadow border border-neutral-700/50" alt="Logo" />
                         <div>
-                          <h4 className="text-xs font-bold leading-none">WallFlow</h4>
+                          <h4 className="text-xs font-bold leading-none">AuraCanvas</h4>
                           <span className="text-[10px] text-neutral-400">Automatic wallpapers active</span>
                         </div>
                       </div>
@@ -205,7 +203,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                 <div className="pt-4 space-y-4">
                   <div className="p-3.5 rounded-2xl bg-neutral-900/60 backdrop-blur-xl border border-white/10 flex items-center justify-between text-xs">
                     <div>
-                      <span className="font-semibold">WallFlow Active</span>
+                      <span className="font-semibold">AuraCanvas Active</span>
                       <p className="text-[10px] text-neutral-300">
                         Changing every {settings.intervalMinutes}m • {formatCountdown(remainingSeconds)} left
                       </p>
@@ -259,10 +257,8 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                       onClick={() => onUpdateDeviceState({ screenView: 'app_view' })}
                       className="flex flex-col items-center gap-1 cursor-pointer"
                     >
-                      <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-900/40 ring-2 ring-emerald-400/50">
-                        <Sparkles className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-bold text-emerald-400">WallFlow</span>
+                      <img src="/logo.png" className="w-11 h-11 rounded-2xl shadow-lg shadow-purple-900/40 ring-2 ring-emerald-400/50 object-cover" alt="AuraCanvas" />
+                      <span className="text-[10px] font-bold text-emerald-400">AuraCanvas</span>
                     </div>
                   </div>
                 </div>

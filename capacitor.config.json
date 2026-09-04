@@ -1,6 +1,6 @@
 {
-  "appId": "com.wallflow.app",
-  "appName": "WallFlow",
+  "appId": "com.auracanvas.app",
+  "appName": "AuraCanvas",
   "webDir": "dist",
   "bundledWebRuntime": false,
   "server": {

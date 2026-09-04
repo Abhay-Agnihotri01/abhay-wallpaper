@@ -39,7 +39,7 @@ export const AndroidBlueprintModal: React.FC<AndroidBlueprintModalProps> = ({
     {
       step: 1,
       title: 'Project Init & Dependencies',
-      prompt: `Create a modern Android Studio project called "WallFlow" using Kotlin and Jetpack Compose (Material 3). Add dependencies for Retrofit2, OkHttp3, Kotlinx Serialization, Room DB, AndroidX DataStore Preferences, and AndroidX WorkManager. Set compileSdk = 35 and minSdk = 26.`,
+      prompt: `Create a modern Android Studio project called "AuraCanvas" using Kotlin and Jetpack Compose (Material 3). Add dependencies for Retrofit2, OkHttp3, Kotlinx Serialization, Room DB, AndroidX DataStore Preferences, and AndroidX WorkManager. Set compileSdk = 35 and minSdk = 26.`,
     },
     {
       step: 2,
@@ -69,7 +69,7 @@ export const AndroidBlueprintModal: React.FC<AndroidBlueprintModalProps> = ({
     {
       step: 7,
       title: 'Persistent Notification with Quick Actions',
-      prompt: `Create a foreground service notification for WallFlow showing active status: "Automatic wallpapers active • Next: 4 min" with three pending intent notification action buttons: [Pause], [Next Wallpaper], and [Stop].`,
+      prompt: `Create a foreground service notification for AuraCanvas showing active status: "Automatic wallpapers active • Next: 4 min" with three pending intent notification action buttons: [Pause], [Next Wallpaper], and [Stop].`,
     },
     {
       step: 8,
@@ -99,7 +99,7 @@ export const AndroidBlueprintModal: React.FC<AndroidBlueprintModalProps> = ({
   ];
 
   const FOLDER_STRUCTURE_TEXT = `app/
-├── src/main/java/com/wallflow/app/
+├── src/main/java/com/auracanvas/app/
 │   ├── ui/
 │   │   ├── home/HomeScreen.kt
 │   │   ├── settings/SettingsScreen.kt
@@ -141,11 +141,11 @@ export const AndroidBlueprintModal: React.FC<AndroidBlueprintModalProps> = ({
 }
 
 android {
-    namespace = "com.wallflow.app"
+    namespace = "com.auracanvas.app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.wallflow.app"
+        applicationId = "com.auracanvas.app"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -186,7 +186,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 }`;
 
-  const KOTLIN_WALLPAPER_HELPER = `package com.wallflow.app.wallpaper
+  const KOTLIN_WALLPAPER_HELPER = `package com.auracanvas.app.wallpaper
 
 import android.app.WallpaperManager
 import android.content.Context
@@ -351,10 +351,10 @@ class WallpaperManagerHelper(private val context: Context) {
                 <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 space-y-2">
                   <div className="flex items-center gap-2 font-semibold text-xs text-emerald-400">
                     <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-mono">3</span>
-                    Download "WallFlow-APK-Debug" Artifact
+                    Download "AuraCanvas-APK-Debug" Artifact
                   </div>
                   <p className="text-xs text-neutral-400 pl-7">
-                    Once the workflow run finishes (indicated by a green checkmark ✓), click on the run, scroll down to the <strong>Artifacts</strong> section, and click <strong>WallFlow-APK-Debug</strong> to download your APK!
+                    Once the workflow run finishes (indicated by a green checkmark ✓), click on the run, scroll down to the <strong>Artifacts</strong> section, and click <strong>AuraCanvas-APK-Debug</strong> to download your APK!
                   </p>
                 </div>
               </div>

@@ -169,7 +169,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <SettingsIcon className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-neutral-100">WallFlow Settings</h2>
+              <h2 className="text-lg font-semibold text-neutral-100">AuraCanvas Settings</h2>
               <p className="text-xs text-neutral-400">Configure scheduling, storage, battery, and image sources</p>
             </div>
           </div>
@@ -414,7 +414,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold text-neutral-100">WallFlow Curated Photography</span>
+                    <span className="text-xs font-semibold text-neutral-100">AuraCanvas Curated Photography</span>
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-medium">
                       Zero-Latency Offline
                     </span>

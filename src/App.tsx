@@ -123,14 +123,12 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           {/* Brand Logo & Tagline */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white flex items-center justify-center font-black text-sm shadow-md shadow-emerald-950">
-              WF
-            </div>
+            <img src="/logo.png" className="w-9 h-9 rounded-xl shadow-md shadow-purple-950/50 border border-neutral-700/50 object-cover" alt="AuraCanvas Logo" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-base tracking-tight text-white">WallFlow</span>
+                <span className="font-bold text-base tracking-tight text-white">AuraCanvas</span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hidden sm:inline-block">
-                  AI Wallpaper Automator
+                  AI Wallpaper Engine
                 </span>
               </div>
               <p className="text-[11px] text-neutral-400 hidden sm:block">

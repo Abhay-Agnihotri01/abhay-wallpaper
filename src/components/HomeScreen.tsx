@@ -70,10 +70,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* App Top Bar */}
       <div className="px-5 py-3.5 border-b border-neutral-900 flex items-center justify-between sticky top-0 bg-neutral-950/95 backdrop-blur-md z-10">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-black text-xs tracking-tighter">
-            WF
-          </div>
-          <h1 className="text-base font-bold tracking-wider text-neutral-100 uppercase">WallFlow</h1>
+          <img src="/logo.png" className="w-7 h-7 rounded-lg shadow border border-neutral-800 object-cover" alt="AuraCanvas Logo" />
+          <h1 className="text-base font-bold tracking-wider text-neutral-100 uppercase">AuraCanvas</h1>
         </div>
 
         <div className="flex items-center gap-2">

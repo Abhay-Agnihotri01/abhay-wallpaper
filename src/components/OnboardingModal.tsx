@@ -83,11 +83,9 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
         {/* Step 1: Welcome */}
         {step === 1 && (
           <div className="p-6 space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-              <Sparkles className="w-6 h-6" />
-            </div>
+            <img src="/logo.png" className="w-14 h-14 rounded-2xl shadow-xl shadow-purple-950/60 border border-neutral-700/50 object-cover" alt="AuraCanvas Logo" />
             <div>
-              <h2 className="text-xl font-bold text-neutral-100">Welcome to WallFlow</h2>
+              <h2 className="text-xl font-bold text-neutral-100">Welcome to AuraCanvas</h2>
               <p className="text-sm text-neutral-400 mt-1 leading-relaxed">
                 Automatically discover stunning wallpapers based on your exact interests, rotate them at your preferred interval, and maintain zero phone storage bloat with aggressive cache cleanup.
               </p>

@@ -1,5 +1,5 @@
 {
-  "name": "WallFlow",
+  "name": "AuraCanvas",
   "description": "An Android app and simulator that automatically discovers wallpapers based on interests, changes wallpapers on schedule, and aggressively cleans up storage.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

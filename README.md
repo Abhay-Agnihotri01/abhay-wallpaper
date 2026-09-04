@@ -1,6 +1,6 @@
-# WallFlow - AI Wallpaper Automator & Android App
+# AuraCanvas - AI Wallpaper Engine & Android App
 
-WallFlow is an automated wallpaper manager web & native Android solution featuring automatic cache cleanup, configurable rotation intervals, Unsplash integration, and simulated Android background constraints.
+AuraCanvas is an automated wallpaper manager web & native Android solution featuring automatic cache cleanup, configurable rotation intervals, Unsplash integration, and simulated Android background constraints.
 
 ---
 
@@ -35,7 +35,7 @@ git push -u origin main
 2. Click on the **Actions** tab at the top of the repository.
 3. Under **All workflows**, click on the latest workflow run named **Build Android APK** (or **Build & Package Android APK**).
 4. Once the build finishes (you will see a green checkmark `✓`), scroll down to the bottom of the page to the **Artifacts** section.
-5. Click on **`WallFlow-APK-Debug`**.
+5. Click on **`AuraCanvas-APK-Debug`**.
 6. GitHub will download a `.zip` file containing your **`app-debug.apk`**!
 7. Extract the ZIP file and transfer `app-debug.apk` to your Android phone (or open it directly on your phone) to install the app.
 

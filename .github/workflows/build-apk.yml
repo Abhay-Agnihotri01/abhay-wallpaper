@@ -45,7 +45,7 @@ jobs:
 
       - name: Capacitor Setup & Sync Android
         run: |
-          npx cap init WallFlow com.wallflow.app --web-dir dist || true
+          npx cap init AuraCanvas com.auracanvas.app --web-dir dist || true
           npx cap add android || true
           npx cap sync android
 
@@ -58,6 +58,6 @@ jobs:
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: WallFlow-APK-Debug
+          name: AuraCanvas-APK-Debug
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
