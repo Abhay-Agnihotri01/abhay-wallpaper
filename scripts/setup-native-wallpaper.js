@@ -206,18 +206,36 @@ public class WallpaperPlugin extends Plugin {
                 flags = WallpaperManager.FLAG_SYSTEM | WallpaperManager.FLAG_LOCK;
             }
 
+            java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 95, bos);
+            byte[] byteArray = bos.toByteArray();
+
             boolean success = false;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 try {
-                    wallpaperManager.setBitmap(bitmap, null, true, flags);
+                    java.io.ByteArrayInputStream bis = new java.io.ByteArrayInputStream(byteArray);
+                    wallpaperManager.setStream(bis, null, true, flags);
                     success = true;
+                    Log.d(TAG, "Applied wallpaper via setStream with flags: " + flags);
                 } catch (Exception e) {
-                    Log.w(TAG, "4-parameter setBitmap failed, falling back to standard setBitmap", e);
+                    Log.w(TAG, "setStream with flags failed, trying basic setStream", e);
+                }
+            }
+
+            if (!success) {
+                try {
+                    java.io.ByteArrayInputStream bis2 = new java.io.ByteArrayInputStream(byteArray);
+                    wallpaperManager.setStream(bis2);
+                    success = true;
+                    Log.d(TAG, "Applied wallpaper via basic setStream");
+                } catch (Exception e) {
+                    Log.w(TAG, "basic setStream failed, trying setBitmap", e);
                 }
             }
 
             if (!success) {
                 wallpaperManager.setBitmap(bitmap);
+                Log.d(TAG, "Applied wallpaper via setBitmap fallback");
             }
             return true;
         } catch (Exception e) {

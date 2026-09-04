@@ -253,6 +253,9 @@ export class WallpaperEngine {
     this.currentWallpaper = initial;
     this.recentImageIds.push(initial.providerImageId);
     
+    // Automatically apply initial wallpaper to physical device system wallpaper on launch
+    setDeviceSystemWallpaper(initial.downloadUrl, this.settings.applyTo);
+
     this.cachedFiles = [
       {
         slot: 'CURRENT',
